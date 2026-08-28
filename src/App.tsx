@@ -9,17 +9,20 @@ type Station = {
   details: string[]; color: number; position: [number, number, number];
 };
 
+const WORLD_SCALE = 4.5;
+const position = (x: number, z: number): [number, number, number] => [x * WORLD_SCALE, 0, z * WORLD_SCALE];
+
 const STATIONS: Station[] = [
-  { id: "intro", code: "00", title: "서문성", place: "중앙 관제센터", summary: "항공우주 시스템을 배우고, 설계하고, 사람과 프로젝트를 연결합니다.", details: ["항공우주공학", "위성·UAM 연구", "3D 설계와 창작"], color: 0x70e1ff, position: [0, 0, 0] },
-  { id: "leadership", code: "01", title: "GNUniverse 회장 활동", place: "우주기지 지휘본부", summary: "동아리의 방향을 설계하고 구성원과 프로젝트 운영을 이끈 경험입니다.", details: ["조직 운영", "프로젝트 조율", "협업과 리더십"], color: 0xffb45d, position: [-18, 0, -12] },
-  { id: "education", code: "02", title: "인공위성 교육 기획·운영", place: "우주기술 교육센터", summary: "교육 과정을 기획하고 위성 기술을 이해하기 쉬운 경험으로 전달합니다.", details: ["교육 프로그램 기획", "수업 운영", "활동 기록"], color: 0x84f0b3, position: [17, 0, -15] },
-  { id: "satellite", code: "03", title: "큐브위성·CanSat", place: "위성 개발·조립동", summary: "임무 설계부터 시스템 구성까지 소형위성 개발 흐름을 학습합니다.", details: ["임무 정의", "서브시스템 학습", "제작·시험"], color: 0xf6df72, position: [23, 0, 7] },
-  { id: "catia", code: "04", title: "CATIA 시스템 모델링", place: "공학 설계연구소", summary: "CATIA를 활용해 우주 시스템의 형상과 조립 구조를 설계합니다.", details: ["3D CAD", "부품 모델링", "조립 설계"], color: 0xa9a2ff, position: [13, 0, 22] },
-  { id: "blender", code: "05", title: "Blender 3D 창작", place: "개인 3D 창작 스튜디오", summary: "캐릭터와 배경을 모델링하며 기술과 시각적 스토리텔링을 연결합니다.", details: ["캐릭터 모델링", "배경 제작", "렌더링"], color: 0xff8c79, position: [-11, 0, 23] },
-  { id: "aero", code: "06", title: "UAM 공력해석 자동화", place: "UAM 공력시험장", summary: "OpenVSP·VSPAERO·MATLAB을 연결해 로터 형상 생성과 해석을 자동화합니다.", details: ["OpenVSP", "VSPAERO", "MATLAB DOE"], color: 0x59c8ff, position: [-25, 0, 9] },
-  { id: "skills", code: "07", title: "핵심 기술과 역량", place: "기술 장비 보관소", summary: "리더십, 위성, 3D 모델링과 공학 해석 역량을 한곳에 정리했습니다.", details: ["Leadership", "Satellite Systems", "Engineering Analysis"], color: 0x72e0da, position: [-27, 0, -25] },
-  { id: "records", code: "08", title: "경력과 학력", place: "비행 기록 보관소", summary: "항공우주공학 학습과 활동의 궤적을 시간순으로 확인합니다.", details: ["학력", "활동 경력", "프로젝트 기록"], color: 0xd9efff, position: [4, 0, -28] },
-  { id: "contact", code: "09", title: "연락 및 외부 링크", place: "우주기지 통신센터", summary: "이력서와 GitHub 등 외부 채널로 연결되는 최종 도킹 포인트입니다.", details: ["Resume", "Email", "GitHub · LinkedIn"], color: 0xffd166, position: [29, 0, -27] },
+  { id: "intro", code: "00", title: "서문성", place: "중앙 관제센터", summary: "항공우주 시스템을 배우고, 설계하고, 사람과 프로젝트를 연결합니다.", details: ["항공우주공학", "위성·UAM 연구", "3D 설계와 창작"], color: 0x70e1ff, position: position(0, 0) },
+  { id: "leadership", code: "01", title: "GNUniverse 회장 활동", place: "우주기지 지휘본부", summary: "동아리의 방향을 설계하고 구성원과 프로젝트 운영을 이끈 경험입니다.", details: ["조직 운영", "프로젝트 조율", "협업과 리더십"], color: 0xffb45d, position: position(-18, -12) },
+  { id: "education", code: "02", title: "인공위성 교육 기획·운영", place: "우주기술 교육센터", summary: "교육 과정을 기획하고 위성 기술을 이해하기 쉬운 경험으로 전달합니다.", details: ["교육 프로그램 기획", "수업 운영", "활동 기록"], color: 0x84f0b3, position: position(17, -15) },
+  { id: "satellite", code: "03", title: "큐브위성·CanSat", place: "위성 개발·조립동", summary: "임무 설계부터 시스템 구성까지 소형위성 개발 흐름을 학습합니다.", details: ["임무 정의", "서브시스템 학습", "제작·시험"], color: 0xf6df72, position: position(23, 7) },
+  { id: "catia", code: "04", title: "CATIA 시스템 모델링", place: "공학 설계연구소", summary: "CATIA를 활용해 우주 시스템의 형상과 조립 구조를 설계합니다.", details: ["3D CAD", "부품 모델링", "조립 설계"], color: 0xa9a2ff, position: position(13, 22) },
+  { id: "blender", code: "05", title: "Blender 3D 창작", place: "개인 3D 창작 스튜디오", summary: "캐릭터와 배경을 모델링하며 기술과 시각적 스토리텔링을 연결합니다.", details: ["캐릭터 모델링", "배경 제작", "렌더링"], color: 0xff8c79, position: position(-11, 23) },
+  { id: "aero", code: "06", title: "UAM 공력해석 자동화", place: "UAM 공력시험장", summary: "OpenVSP·VSPAERO·MATLAB을 연결해 로터 형상 생성과 해석을 자동화합니다.", details: ["OpenVSP", "VSPAERO", "MATLAB DOE"], color: 0x59c8ff, position: position(-25, 9) },
+  { id: "skills", code: "07", title: "핵심 기술과 역량", place: "기술 장비 보관소", summary: "리더십, 위성, 3D 모델링과 공학 해석 역량을 한곳에 정리했습니다.", details: ["Leadership", "Satellite Systems", "Engineering Analysis"], color: 0x72e0da, position: position(-27, -25) },
+  { id: "records", code: "08", title: "경력과 학력", place: "비행 기록 보관소", summary: "항공우주공학 학습과 활동의 궤적을 시간순으로 확인합니다.", details: ["학력", "활동 경력", "프로젝트 기록"], color: 0xd9efff, position: position(4, -28) },
+  { id: "contact", code: "09", title: "연락 및 외부 링크", place: "우주기지 통신센터", summary: "이력서와 GitHub 등 외부 채널로 연결되는 최종 도킹 포인트입니다.", details: ["Resume", "Email", "GitHub · LinkedIn"], color: 0xffd166, position: position(29, -27) },
 ];
 
 function labelSprite(text: string, color: number) {
@@ -71,16 +74,16 @@ export default function SpacePortfolio() {
 
   useEffect(() => {
     const mount = mountRef.current; if (!mount) return;
-    const scene = new THREE.Scene(); scene.background = new THREE.Color(0x02070d); scene.fog = new THREE.FogExp2(0x071018, .012);
-    const camera = new THREE.PerspectiveCamera(56, mount.clientWidth / mount.clientHeight, .1, 280); camera.position.set(0, 16, 18);
+    const scene = new THREE.Scene(); scene.background = new THREE.Color(0x02070d); scene.fog = new THREE.FogExp2(0x071018, .003);
+    const camera = new THREE.PerspectiveCamera(56, mount.clientWidth / mount.clientHeight, .1, 1000); camera.position.set(0, 16, 18);
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
     renderer.setSize(mount.clientWidth, mount.clientHeight); renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75)); renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15; mount.appendChild(renderer.domElement);
     scene.add(new THREE.HemisphereLight(0x90cfff, 0x091018, 1.4)); const sun = new THREE.DirectionalLight(0xffe8c2, 3.2); sun.position.set(-28, 42, 14); scene.add(sun);
-    const moon = new THREE.Mesh(new THREE.CircleGeometry(72, 96), new THREE.MeshStandardMaterial({ color: 0x3e4548, roughness: 1 })); moon.rotation.x = -Math.PI / 2; scene.add(moon);
-    const grid = new THREE.GridHelper(120, 60, 0x1b596c, 0x19313a); grid.position.y = .025; (grid.material as THREE.Material).transparent = true; (grid.material as THREE.Material).opacity = .22; scene.add(grid);
-    const stars = new Float32Array(2700); for (let i = 0; i < 900; i++) { const r = 70 + Math.random() * 140, a = Math.random() * Math.PI * 2; stars[i*3] = Math.cos(a)*r; stars[i*3+1] = 16 + Math.random()*100; stars[i*3+2] = Math.sin(a)*r; }
+    const moon = new THREE.Mesh(new THREE.CircleGeometry(360, 128), new THREE.MeshStandardMaterial({ color: 0x3e4548, roughness: 1 })); moon.rotation.x = -Math.PI / 2; scene.add(moon);
+    const grid = new THREE.GridHelper(600, 120, 0x1b596c, 0x19313a); grid.position.y = .025; (grid.material as THREE.Material).transparent = true; (grid.material as THREE.Material).opacity = .22; scene.add(grid);
+    const stars = new Float32Array(2700); for (let i = 0; i < 900; i++) { const r = 280 + Math.random() * 560, a = Math.random() * Math.PI * 2; stars[i*3] = Math.cos(a)*r; stars[i*3+1] = 40 + Math.random()*300; stars[i*3+2] = Math.sin(a)*r; }
     const starGeo = new THREE.BufferGeometry(); starGeo.setAttribute("position", new THREE.BufferAttribute(stars, 3)); scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xdff7ff, size: .22 })));
-    const earth = new THREE.Mesh(new THREE.SphereGeometry(8.5, 32, 20), new THREE.MeshStandardMaterial({ color: 0x2d7fa4, emissive: 0x0d2e47, emissiveIntensity: .3 })); earth.position.set(-62, 42, -88); scene.add(earth);
+    const earth = new THREE.Mesh(new THREE.SphereGeometry(24, 32, 20), new THREE.MeshStandardMaterial({ color: 0x2d7fa4, emissive: 0x0d2e47, emissiveIntensity: .3 })); earth.position.set(-280, 140, -390); scene.add(earth);
     STATIONS.forEach((s) => scene.add(buildStation(s))); const craft = buildCraft(); craftRef.current = craft; scene.add(craft);
 
     const keydown = (e: KeyboardEvent) => { keysRef.current[e.key.toLowerCase()] = true; if (e.key === "Enter" && nearbyRef.current) setActive(nearbyRef.current); if (e.key.toLowerCase() === "m") setMapOpen((v) => !v); if (e.key === "Escape") setActive(null); };
@@ -91,7 +94,7 @@ export default function SpacePortfolio() {
       frame = requestAnimationFrame(animate); const dt = Math.min(clock.getDelta(), .04); const k = keysRef.current;
       if (k.w || k.arrowup) speed += 8.5 * dt; if (k.s || k.arrowdown) speed -= 6.5 * dt; if (!k.w && !k.arrowup && !k.s && !k.arrowdown) speed *= Math.pow(.035, dt);
       speed = THREE.MathUtils.clamp(speed, -4.5, 9.5); if (k.a || k.arrowleft) craft.rotation.y += 2.1 * dt; if (k.d || k.arrowright) craft.rotation.y -= 2.1 * dt; craft.translateZ(-speed * dt);
-      const radius = Math.hypot(craft.position.x, craft.position.z); if (radius > 58) { craft.position.x *= 58/radius; craft.position.z *= 58/radius; }
+      const radius = Math.hypot(craft.position.x, craft.position.z); if (radius > 270) { craft.position.x *= 270/radius; craft.position.z *= 270/radius; }
       craft.position.y = .12 + Math.sin(clock.elapsedTime * 2.2) * .08;
       const cameraGoal = new THREE.Vector3(0, 12, 14).applyAxisAngle(new THREE.Vector3(0,1,0), craft.rotation.y).add(craft.position); camera.position.lerp(cameraGoal, 1 - Math.pow(.001, dt)); camera.lookAt(craft.position.clone().add(new THREE.Vector3(0,1.2,0)));
       const nearest = STATIONS.reduce((best, station) => {
